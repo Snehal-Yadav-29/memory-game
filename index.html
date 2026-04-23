@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Sequence Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Home Screen -->
+        <section id="homeScreen" class="home-screen">
+            <header>
+                <h1>Memory Sequence Game</h1>
+                <p class="subtitle">Test your memory with different challenges!</p>
+            </header>
+            <div class="mode-buttons">
+                <button class="mode-btn" data-mode="numbers">Numbers</button>
+                <button class="mode-btn" data-mode="alphabets">Alphabets</button>
+                <button class="mode-btn" data-mode="colors">Colors</button>
+                <button class="mode-btn" data-mode="shapes">Shapes</button>
+            </div>
+        </section>
+
+        <!-- Game Section -->
+        <main id="gameSection" class="game-section hidden">
+            <!-- Back Button -->
+            <div class="back-button-container">
+                <button id="backBtn" class="btn btn-back">← Back to Modes</button>
+            </div>
+            <div class="game-info">
+                <div class="round-indicator">
+                    <span>Round: </span>
+                    <span id="currentRound">1</span>
+                </div>
+                <div class="mode-display">
+                    <span>Mode: </span>
+                    <span id="currentMode">-</span>
+                </div>
+            </div>
+
+            <!-- Sequence Display Area -->
+            <div id="sequenceDisplay" class="sequence-display">
+                <div id="sequenceContent" class="sequence-content"></div>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button id="startBtn" class="btn btn-primary">Start Game</button>
+                
+                <div class="input-section hidden">
+                    <input type="text" id="userInput" class="input-field" placeholder="Enter the sequence" disabled>
+                    <button id="submitBtn" class="btn btn-secondary">Submit</button>
+                </div>
+
+                <!-- Multiple Choice Options -->
+                <div class="options-section hidden">
+                    <p class="options-prompt">Click the items in the correct order:</p>
+                    <div id="optionsContainer" class="options-container"></div>
+                    <div class="user-sequence">
+                        <p>Your sequence: <span id="userSequenceDisplay"></span></p>
+                        <button id="clearSequenceBtn" class="btn btn-small">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Area -->
+            <div id="messageArea" class="message-area"></div>
+
+            <!-- Game Over Section -->
+            <div id="gameOverSection" class="game-over-section hidden">
+                <h3>Game Over!</h3>
+                <p id="finalScore"></p>
+                <p id="correctSequence"></p>
+                <button id="restartBtn" class="btn btn-primary">Play Again</button>
+            </div>
+
+            <!-- Memory Report Section -->
+            <div id="memoryReportSection" class="memory-report-section hidden">
+                <h3> Memory Report</h3>
+                <div class="report-content">
+                    <div class="report-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">Game Mode:</span>
+                            <span id="reportMode" class="metric-value">-</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Total Rounds:</span>
+                            <span id="reportRounds" class="metric-value">-</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Longest Sequence:</span>
+                            <span id="reportLongest" class="metric-value">-</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Correct / Wrong:</span>
+                            <span id="reportAttempts" class="metric-value">-</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Avg Response Time:</span>
+                            <span id="reportAvgTime" class="metric-value">-</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Memory Score:</span>
+                            <span id="reportScore" class="metric-value score-highlight">-</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Memory Level:</span>
+                            <span id="reportLevel" class="metric-value level-badge">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Correct Answer Display -->
+                <div class="correct-answer-section">
+                    <h4>Correct Sequence</h4>
+                    <div id="reportCorrectSequence" class="correct-sequence-display">
+                        <!-- Correct sequence will be displayed here -->
+                    </div>
+                </div>
+                
+                <!-- Cognitive Improvement Tips -->
+                <div class="tips-section">
+                    <h4>🎯 Improve Your Memory & Focus</h4>
+                    <div id="tipsContainer" class="tips-container">
+                        <!-- Tips will be dynamically added here -->
+                    </div>
+                </div>
+
+                <div class="report-actions">
+                    <button id="viewHistoryBtn" class="btn btn-secondary">View History</button>
+                    <button id="playAgainBtn" class="btn btn-primary">Play Again</button>
+                    <button id="backToHomeBtn" class="btn btn-back">Back to Home</button>
+                </div>
+            </div>
+
+            <!-- History Modal -->
+            <div id="historyModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>📊 Performance History</h3>
+                        <button id="closeHistoryBtn" class="btn-close">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="historyContent" class="history-content">
+                            <!-- History will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="correctSound" src="correct.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="wrong.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
